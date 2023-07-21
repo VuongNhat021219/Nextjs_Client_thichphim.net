@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Container, Row, Col, Nav, Navbar } from "react-bootstrap";
 import NavDropdown from "react-bootstrap/NavDropdown";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,

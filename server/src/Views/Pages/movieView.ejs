@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ('../Layouts/Head.ejs') %>
+</head>
+
+<body>
+
+    <div class="container-scroller">
+        <%- include ('../Layouts/Sidebar.ejs') %>
+            <div class="container-fluid page-body-wrapper">
+                <%- include ('../Layouts/Header.ejs') %>
+                    <div class="main-panel">
+                        <div class="content-wrapper pb-0">
+
+                            <%- include ('../Content/movieContent.ejs') %>
+                        </div>
+                            <%- include('../Layouts/Footer.ejs') %>
+                    </div>
+            </div>
+    </div>
+    <%- include ('../Layouts/Jsfooter.ejs') %>
+</body>
+
+</html>

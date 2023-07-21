@@ -159,7 +159,7 @@ export async function getStaticProps() {
 
   // Xử lý dữ liệu cho trang phim hành động với `page` cụ thể
   const res = await fetch(
-    `http://localhost:3000/api/v1/phim-hinh-su?page=${page}`
+    `api/v1/phim-hinh-su?page=${page}`
   );
   const data = await res.json();
 

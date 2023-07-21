@@ -1,0 +1,93 @@
+<div class="page-header flex-wrap">
+    <h3 class="mb-0"> Thêm mới
+        <span class="pl-0 h6 pl-sm-2 text-muted d-inline-block">
+            Hãy thêm mới đúng các trường bên dưới
+        </span>
+    </h3>
+    <div class="d-flex">
+        <a href="/oadmin/movie">
+            <button type="button" class="btn btn-warning btn-rounded "><i
+                    class="mdi mdi-chevron-double-left btn-icon-prepend"></i> Quay lại </button>
+        </a>
+        <a href="/oadmin/movie/edit">
+            <button type="button" class="btn btn-sm bg-primary btn-success btn-icon-text border ml-3">
+                <i class="mdi mdi-pen btn-icon-prepend"></i> Cập nhật</button>
+        </a>
+        <button type="button" class="btn btn-sm ml-3 btn-success">
+            <i class="mdi mdi-close-circle btn-icon-prepend"></i> Xoá
+            phim</button>
+    </div>
+</div>
+
+<div class="card" bis_skin_checked="1">
+    <div class="card-body" bis_skin_checked="1">
+        <form class="forms-sample" action="/oadmin/movie/add" enctype="multipart/form-data" method="post">
+
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="col-md-4">
+                    <div class="form-group" bis_skin_checked="1">
+                        <label>Tiêu đề</label>
+                        <input type="text" class="form-control" name="title" placeholder="Nhập tiêu đề...">
+                    </div>
+                    <div class="form-group" bis_skin_checked="1">
+                        <label>Tác giả </label>
+                        <input type="text" class="form-control" name="director" placeholder="Nhập tác giả...">
+                    </div>
+                    <div class="form-group" bis_skin_checked="1">
+                        <label>Diễn viên </label>
+                        <input type="text" class="form-control" name="actor" placeholder="Nhập diễn viên ...">
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                    <div class="form-group" bis_skin_checked="1">
+                        <label>Thể loại</label>
+                        <input type="text" class="form-control" name="genre" placeholder="Nhập thể loại...">
+                    </div>
+                    <div class="form-group" bis_skin_checked="1">
+                        <label>Ngày sản xuất </label>
+                        <input type="date" class="form-control" name="release" placeholder="Nhập ngày phát hành...">
+                    </div>
+                    <div class="form-group" bis_skin_checked="1">
+                        <label>Thời lượng phim</label>
+                        <input type="number" class="form-control" name="duration" placeholder="Nhập thời lượng ...">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group" bis_skin_checked="1">
+                        <label>Người đăng</label>
+                        <input type="text" class="form-control" name="poster" placeholder="Nhập người đăng...">
+                    </div>
+                    <div class="form-group" bis_skin_checked="1">
+                        <label>Tóm tắt phim</label>
+                        <input type="text" class="form-control" name="summary" placeholder="Nhập tóm tắt...">
+                    </div>
+                    <div class="form-group" bis_skin_checked="1">
+                        <label>Mô tả</label>
+                        <input type="text" class="form-control" name="description" placeholder="Nhập mô tả...">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="col-md-6">
+                    <div class="form-group" bis_skin_checked="1">
+                        <label>Chọn một/nhiều Ảnh: (Dữ phím Ctrl để thêm nhiều ảnh)</label>
+                        <input type="file" name="images" multiple>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group" bis_skin_checked="1">
+                        <label>Video Phim:</label>
+                        <input type="file" name="clip">
+
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary ml-2   float-right"> Submit </button>
+            <button class="btn btn-light float-right">Cancel</button>
+        </form>
+    </div>
+</div>

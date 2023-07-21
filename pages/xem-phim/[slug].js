@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import Layout from "@/components/Layout";
-import Link from "next/link";
 import { BsArrowsFullscreen } from "react-icons/bs";
 import WatchMovieCSS from "@/styles/_watchmovie.module.scss";
 import WatchTVCSS from "@/styles/_watchtv.module.scss";
@@ -20,18 +19,21 @@ export default function WatchTV() {
   const pathParts = pathname.split("/");
   const slug = pathParts[pathParts.length - 1];
   useEffect(() => {
-    fetchMovie();
-  }, []);
-  const fetchMovie = async () => {
-    try {
-      const response = await getOneMovieSlug(slug);
+    const fetchMovie = async () => {
+      try {
+        if (slug !== undefined && slug !== "[slug]") {
+          const response = await getOneMovieSlug(slug);
 
-      return setMovie(response.data);
-    } catch (error) {
-      // console.log("lỗi");
-      // router.push("/not-found");
-    }
-  };
+          return setMovie(response.data);
+        }
+      } catch (error) {
+        console.log("lỗi", error);
+        // router.push("/not-found");
+      }
+    };
+    fetchMovie();
+  }, [slug]);
+
   const iframeRef = useRef(null);
 
   const handleFullscreenClick = () => {
@@ -47,8 +49,6 @@ export default function WatchTV() {
       iframe.msRequestFullscreen();
     }
   };
-  console.log(movie);
-  console.log(PageValue - 1);
   return (
     <Layout>
       <div className={WatchMovieCSS.detail}>
@@ -67,7 +67,6 @@ export default function WatchTV() {
               </Col>
             </Row>
             <div className={WatchTVCSS.detail__content___list}>
-              {/* <Watchtv movie={movie}  /> */}
               {/* movie detail */}
               <div className={WatchTVCSS.watchtv}>
                 <Container>

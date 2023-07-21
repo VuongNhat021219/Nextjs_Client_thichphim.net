@@ -1,7 +1,8 @@
 import React from "react";
 import Layout from "../../components/Layout";
 import Link from "next/link";
-import Image from 'next/image';
+import Image from "next/image";
+import { getOnePhimGiaDinh } from "@/pages/api/getData";
 import { Container, Row, Col } from "react-bootstrap";
 import { BiMoviePlay } from "react-icons/bi";
 import styles from "@/styles/_home.module.scss";
@@ -157,11 +158,7 @@ export default function PhimGiaDinhIndex({ data, allTrendMovieDatas }) {
 export async function getStaticProps() {
   const page = 1;
 
-  // Xử lý dữ liệu cho trang phim hành động với `page` cụ thể
-  const res = await fetch(
-    `http://localhost:3000/api/v1/phim-gia-dinh?page=${page}`
-  );
-  const data = await res.json();
+  const data = await getOnePhimGiaDinh(page);
 
   const allTrendMovieDatas = await getTrendMovieData();
 
@@ -172,4 +169,3 @@ export async function getStaticProps() {
     },
   };
 }
-

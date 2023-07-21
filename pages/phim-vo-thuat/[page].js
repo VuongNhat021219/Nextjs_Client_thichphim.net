@@ -1,7 +1,9 @@
 import React from "react";
 import Layout from "../../components/Layout";
 import Link from "next/link";
-import Image from 'next/image';
+import Image from "next/image";
+import { getOnePhimVoThuat, getAllPhimVoThuat } from "@/pages/api/getData";
+
 import { Container, Row, Col } from "react-bootstrap";
 import { BiMoviePlay } from "react-icons/bi";
 import styles from "@/styles/_home.module.scss";
@@ -157,11 +159,7 @@ export default function PhimVoThuat({ data, allTrendMovieDatas }) {
 export async function getStaticProps({ params }) {
   const { page } = params;
 
-  // Xử lý dữ liệu cho trang phim hành động với `page` cụ thể
-  const res = await fetch(
-    `http://localhost:3000/api/v1/phim-vo-thuat?page=${page}`
-  );
-  const data = await res.json();
+  const data = await getOnePhimVoThuat(page);
 
   const allTrendMovieDatas = await getTrendMovieData();
 
@@ -174,10 +172,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(
-    `http://localhost:3000/api/v1/all-movie/phim-vo-thuat`
-  );
-  const data = await res.json();
+  const data = await getAllPhimVoThuat();
 
   const totalMovies = data.length;
   const totalPages = Math.ceil(totalMovies / 24);

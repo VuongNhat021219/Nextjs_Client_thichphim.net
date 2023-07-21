@@ -1,0 +1,63 @@
+<div class="page-header flex-wrap">
+    <h3 class="mb-0"> Quản lý phim
+        <span class="pl-0 h6 pl-sm-2 text-muted d-inline-block">
+            <div class="input-group" bis_skin_checked="1">
+                <input type="text" class="form-control" placeholder="Tìm phim..." aria-label="Tìm phim..."
+                    aria-describedby="basic-addon2">
+                <div class="input-group-append" bis_skin_checked="1">
+                    <button class="btn btn-sm btn-primary" type="button"> Tìm kiếm</button>
+                </div>
+            </div>
+        </span>
+    </h3>
+    <div class="d-flex">
+        <a href="/oadmin/movie/add"><button type="button" class="btn btn-sm bg-danger btn-success btn-icon-text border">
+                <i class="mdi mdi-calendar-plus btn-icon-prepend"></i> Thêm mới phim</button></a>
+        <a href="/oadmin/movie/edit">
+            <button type="button" class="btn btn-sm bg-primary btn-success btn-icon-text border ml-3">
+                <i class="mdi mdi-pen btn-icon-prepend"></i> Cập nhật</button>
+        </a>
+        <button type="button" class="btn btn-sm ml-3 btn-success">
+            <i class="mdi mdi-close-circle btn-icon-prepend"></i> Xoá
+            phim</button>
+    </div>
+
+</div>
+<div class="col-xl-12 col-sm-12 grid-margin stretch-card" bis_skin_checked="1">
+    <div class="card" bis_skin_checked="1">
+        <div class="card-body" bis_skin_checked="1">
+            <div class="card-title font-weight-medium" bis_skin_checked="1"> Tất cả bộ phim </div>
+            <% movies.forEach((movie,index)=>{%>
+                <div class="col-12 d-flex">
+                    <div class="col-xl-8 col-sm-8 border-bottom border-top">
+
+                        <div class="d-flex flex-wrap  py-2 " bis_skin_checked="1">
+                            <% const images=JSON.parse(movie.images); %>
+                                <% const firstImages=images.slice(0, 1); %>
+                                    <% firstImages.forEach(function(image) { %>
+                                        <img style="width: 100px;" src="../uploads/<%= image %>" alt="Image">
+                                        <% }); %>
+                                            <div class="pt-2 pl-3" bis_skin_checked="1">
+                                                <h5 class="mb-0">
+                                                    <%= movie.title %>
+                                                </h5>
+                                                <p class="mb-0 text-muted">
+                                                    <%= movie.summary %>
+                                                </p>
+                                                <h5 class="mb-0">
+                                                    <%= movie.genre %>
+                                                </h5>
+                                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-sm-4 border-left border-bottom border-top">
+                        <a href="/oadmin/movie/show" class="pt-4 text-center d-block ">
+                            <button type="button" class="btn btn-outline-primary  btn-icon-text">
+                                <i class="mdi mdi-file-check btn-icon-prepend"></i> Xem chi tiết</button>
+                        </a>
+                    </div>
+                </div>
+                <% }); %>
+        </div>
+    </div>
+</div>

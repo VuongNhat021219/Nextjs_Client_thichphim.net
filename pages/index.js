@@ -151,21 +151,28 @@ export default function Home({
   );
 }
 export async function getStaticProps() {
-  const allTrendMovieDatas = await getTrendMovieData();
-  const allgetActionMovie = await getActionMovie();
-  const allgetHorrorMovie = await getHorrorMovie();
-  const allgetFantasyMovie = await getFantasyMovie();
-  const allgetRomanceMovie = await getRomanceMovie();
-  const allgetComedyMovie = await getComedyMovie();
+  try {
+    const allTrendMovieDatas = await getTrendMovieData();
+    const allgetActionMovie = await getActionMovie();
+    const allgetHorrorMovie = await getHorrorMovie();
+    const allgetFantasyMovie = await getFantasyMovie();
+    const allgetRomanceMovie = await getRomanceMovie();
+    const allgetComedyMovie = await getComedyMovie();
 
-  return {
-    props: {
-      allTrendMovieDatas,
-      allgetHorrorMovie,
-      allgetActionMovie,
-      allgetFantasyMovie,
-      allgetRomanceMovie,
-      allgetComedyMovie,
-    },
-  };
+    return {
+      props: {
+        allTrendMovieDatas,
+        allgetHorrorMovie,
+        allgetActionMovie,
+        allgetFantasyMovie,
+        allgetRomanceMovie,
+        allgetComedyMovie,
+      },
+    };
+  } catch (error) {
+    console.log("Error fetching data:", error);
+    return {
+      notFound: true,
+    };
+  }
 }

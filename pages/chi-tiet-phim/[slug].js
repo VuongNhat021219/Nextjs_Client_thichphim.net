@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Container, Row, Col } from "react-bootstrap";
 import Loader from "@/components/Loader";
 import { getOneMovieSlug } from "@/pages/api/getData";
@@ -35,15 +36,18 @@ export default function SlugDetail() {
   useEffect(() => {
     const fetchMovie = async () => {
       try {
-        const response = await getOneMovieSlug(slug);
-
-        return setMovie(response.data);
+        if (slug !== "[slug]" && slug !== undefined) {
+          const response = await getOneMovieSlug(slug);
+          return setMovie(response.data);
+        }
       } catch (error) {
         // router.push("/not-found");
+        console.log("lỗi", error);
       }
     };
     fetchMovie();
-  }, []);
+  }, [slug]);
+
   return (
     <Layout>
       <div className={slugDetailCSS.detail}>
@@ -81,7 +85,9 @@ export default function SlugDetail() {
                           detailCSS.detail__content___list___left___image
                         }
                       >
-                        <img
+                        <Image
+                          width={300}
+                          height={300}
                           src={`${movie.movie?.thumb_url}`}
                           alt={movie.movie?.name}
                         />

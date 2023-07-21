@@ -4,10 +4,9 @@ const cors = require("cors");
 const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
-const database = require("./backend/src/Config/Database");
 
-const mainRoutes = require("./backend/src/Routes/mainRoutes");
-const apiOphim = require("./backend/src/api/ApiParty3/Ophim");
+const mainRoutes = require("./server/src/Routes/mainRoutes");
+const apiOphim = require("./server/src/api/ApiParty3/Ophim");
 
 const dev = process.env.NODE_ENV !== "production";
 const nextApp = next({ dev });
@@ -18,22 +17,16 @@ const port = process.env.PORT || 3000;
 
 const key = "Vuongdev@@";
 
-// Kết nối cơ sở dữ liệu
-const ketnoi = async () => {
-  await database.connectToDatabase();
-};
-ketnoi();
-
 // Middleware để phân tích và truy cập req.body
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Cấu hình template engine
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "./backend/src/Views"));
+app.set("views", path.join(__dirname, "./server/src/Views"));
 
 // Sử dụng các tệp tĩnh từ thư mục "public"
-app.use(express.static(path.join(__dirname, "./backend/public")));
+app.use(express.static(path.join(__dirname, "./server/public")));
 
 // Cấu hình session
 app.use(
@@ -54,7 +47,7 @@ app.use(cors());
 // Sử dụng router chính
 app.use("/", mainRoutes);
 
-// Sử dụng api bên thứ 3
+// Sử dụng api
 app.use("/api/", apiOphim);
 
 // Sử dụng Next.js

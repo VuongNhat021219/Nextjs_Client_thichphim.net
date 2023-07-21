@@ -1,7 +1,9 @@
 import React from "react";
 import Layout from "../../components/Layout";
 import Link from "next/link";
-import Image from 'next/image';
+import Image from "next/image";
+import { getOnePhimTimCam } from "@/pages/api/getData";
+
 import { Container, Row, Col } from "react-bootstrap";
 import { BiMoviePlay } from "react-icons/bi";
 import styles from "@/styles/_home.module.scss";
@@ -11,6 +13,7 @@ import { getTrendMovieData } from "../api/getData";
 import PhimMoiCSS from "@/styles/StylePage/_phimhanhdong.module.scss";
 import Loader from "@/components/Loader";
 import dynamic from "next/dynamic";
+import axios from "axios";
 const PaginationComponent = dynamic(
   () => import("@/components/PaginationComponent"),
   { ssr: false }
@@ -158,10 +161,9 @@ export async function getStaticProps() {
   const page = 1;
 
   // Xử lý dữ liệu cho trang phim hành động với `page` cụ thể
-  const res = await fetch(
+  const { data } = await axios.get(
     `http://localhost:3000/api/v1/phim-tinh-cam?page=${page}`
   );
-  const data = await res.json();
 
   const allTrendMovieDatas = await getTrendMovieData();
 
