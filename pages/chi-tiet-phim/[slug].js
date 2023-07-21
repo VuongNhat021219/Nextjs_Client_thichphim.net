@@ -39,7 +39,7 @@ export default function SlugDetail() {
 
         return setMovie(response.data);
       } catch (error) {
-        router.push("/not-found");
+        // router.push("/not-found");
       }
     };
     fetchMovie();

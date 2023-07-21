@@ -30,10 +30,10 @@ app.use(express.urlencoded({ extended: true }));
 
 // Cấu hình template engine
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "/src/Views"));
+app.set("views", path.join(__dirname, "./backend/src/Views"));
 
 // Sử dụng các tệp tĩnh từ thư mục "public"
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "./backend/public")));
 
 // Cấu hình session
 app.use(
