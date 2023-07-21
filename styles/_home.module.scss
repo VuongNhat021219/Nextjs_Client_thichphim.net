@@ -1,0 +1,16 @@
+.home__content {
+  padding: 62px 0px;
+  background-color: var(--content-bgr);
+  border-top: 1px solid #3e3d3d;
+}
+.home__content--container {
+  border-top: 1px solid #3e3d3d;
+}
+@media (max-width: 768px) {
+  .home__content {
+    padding: 0px;
+  }
+  .mobile__trendMovie {
+    display: none;
+  }
+}

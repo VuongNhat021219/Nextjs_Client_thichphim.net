@@ -1,0 +1,305 @@
+.nav__backgroud {
+  background-color: var(--content-bgr);
+  height: 62px;
+
+  .navbar {
+    background-color: var(--content-bgr) !important;
+    padding: 0;
+  }
+}
+.menunav__header___pc {
+  margin-left: 50px !important;
+  a {
+    color: #fff;
+    li {
+      font-size: 1vw !important;
+    }
+  }
+}
+.dropdown-item {
+  color: #000 !important;
+}
+.time__new {
+  font-weight: 700;
+  margin: 0;
+  color: yellow;
+}
+.menu__header___container {
+  ul {
+    display: flex;
+    line-height: 40px;
+    margin: 0;
+    padding: 0;
+    color: var(--header-text);
+
+    li {
+      font-weight: 600;
+      margin-right: 8px;
+      list-style-type: none;
+      &:hover {
+        cursor: pointer;
+        color: red;
+      }
+    }
+  }
+}
+
+// # width nhỏ hơn 479px
+@media only screen and (max-width: 479px) {
+  .menu__header___mobile {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-150%);
+    transition: transform 600ms linear;
+  }
+  .menu__header___mobile___open {
+    -webkit-transform: none;
+    transform: none;
+    transition: transform 600ms linear;
+    z-index: 999;
+    cursor: pointer;
+  }
+  .nav__backgroud {
+    display: none;
+  }
+
+  @media only screen and (max-width: 650px) {
+    .menu__header___mobile {
+      -webkit-transform: translateX(-100%);
+      transform: translateX(-150%);
+      transition: transform 600ms linear;
+    }
+    .menu__header___mobile___open {
+      -webkit-transform: none;
+      transform: none;
+      transition: transform 600ms linear;
+      z-index: 999;
+      cursor: pointer;
+    }
+    .menu__header___mobile {
+      .header__logo {
+        h3 {
+          font-size: 13px !important;
+          padding-left: 4px !important;
+        }
+      }
+    }
+  }
+  .menu__header___mobile {
+    &___active {
+      background: rebeccapurple;
+      border-radius: 20px;
+      color: #fa3333;
+      padding: 6px 10px;
+    }
+    &___top___logo {
+      .header__logo {
+        h3 {
+          border-bottom: 2px solid #646464;
+          font-size: 18px;
+          padding-left: 14px;
+        }
+      }
+    }
+    top: 0;
+    position: absolute;
+    z-index: 10;
+    width: 60%;
+    height: 100%;
+    &___top___icon {
+      svg {
+        position: absolute;
+        top: 6px;
+        font-size: 27px;
+        right: 8px;
+        color: #280f06;
+      }
+    }
+    ul {
+      position: relative;
+      height: 1000px;
+      border-radius: 10px;
+
+      a {
+        &:hover {
+          cursor: pointer;
+          color: #fa3333;
+          background: rebeccapurple;
+          border-radius: 20px;
+        }
+        padding-top: 8px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        font-size: 16px;
+        color: #000000;
+        font-weight: 600;
+      }
+      padding: 6px;
+      background-color: rgb(255, 255, 255);
+      color: #000000;
+      list-style: none;
+      list-style-type: none;
+    }
+  }
+}
+// # Mobile
+@media only screen and (min-width: 480px) {
+  .menu__header___mobile {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-150%);
+    transition: transform 600ms linear;
+  }
+  .menu__header___mobile___open {
+    -webkit-transform: none;
+    transform: none;
+    transition: transform 600ms linear;
+    z-index: 999;
+    cursor: pointer;
+  }
+  .nav__backgroud {
+    display: none;
+  }
+  @media only screen and (max-width: 650px) {
+    .menu__header___mobile {
+      .header__logo {
+        h3 {
+          font-size: 13px !important;
+          padding-left: 4px !important;
+        }
+      }
+    }
+  }
+  .menu__header___mobile {
+    &___active {
+      background: rebeccapurple;
+      border-radius: 20px;
+      color: #fa3333;
+      padding: 6px 10px;
+    }
+    &___top___logo {
+      .header__logo {
+        h3 {
+          border-bottom: 2px solid #646464;
+          font-size: 18px;
+          padding-left: 14px;
+        }
+      }
+    }
+    top: 0;
+    position: absolute;
+    z-index: 10;
+    width: 40%;
+    height: 100%;
+    &___top___icon {
+      svg {
+        position: absolute;
+        top: 6px;
+        font-size: 27px;
+        right: 8px;
+        color: #280f06;
+      }
+    }
+    ul {
+      position: relative;
+      height: 1000px;
+      border-radius: 10px;
+      li {
+        padding-top: 8px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #000000;
+        font-weight: bold !important;
+        &:hover {
+          cursor: pointer;
+          color: #fa3333;
+          background: rebeccapurple;
+          border-radius: 20px;
+        }
+      }
+      padding: 6px;
+      background-color: rgb(255, 255, 255);
+      color: #000000;
+      list-style: none;
+      list-style-type: none;
+    }
+  }
+}
+
+// # Tablet
+@media only screen and (min-width: 768px) {
+  .menu__header___mobile {
+    display: none;
+  }
+  .menu__header___container {
+    li {
+      font-size: 8px;
+    }
+  }
+  .time__new {
+    font-size: 10px;
+  }
+  .nav__backgroud {
+    display: block !important;
+  }
+}
+
+// # Desktop
+@media only screen and (min-width: 992px) {
+  .menu__header___container {
+    li {
+      font-size: 10px;
+    }
+
+    .time__new {
+      font-size: 14px;
+    }
+  }
+  .nav__backgroud {
+    display: block !important;
+  }
+}
+
+// # Huge
+@media only screen and (min-width: 1280px) {
+  .menu__header___container {
+    li {
+      font-size: 12px;
+    }
+  }
+  .time__new {
+    font-size: 20px;
+  }
+  .nav__backgroud {
+    display: block !important;
+  }
+}
+
+.header__logo {
+  h3 {
+    line-height: 68px;
+    background: linear-gradient(to right, #ff8a00, #ff2070);
+    -webkit-background-clip: text; /* Safari, Chrome, Opera */
+    -moz-background-clip: text; /* Firefox */
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* Safari, Chrome, Opera */
+    -moz-text-fill-color: transparent; /* Firefox */
+    font-weight: 700;
+  }
+  &___star {
+    svg {
+      animation: spin 6s linear infinite;
+    }
+  }
+}
+@keyframes spin {
+  0% {
+    color: #d95454;
+    transform: rotate(0deg);
+  }
+  100% {
+    color: yellow;
+
+    transform: rotate(360deg);
+  }
+}

@@ -2,26 +2,268 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --bgr-content: #151d25;
+  --header-text: #dad5d5;
+  --header-bgr: #1f2933;
+  --content-color: #1f2933;
+  --content-bgr: #12171b;
+  --color-title: #e0ff62;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+a {
+  text-decoration: none !important;
+  font-weight: 600 !important;
+}
+
+.icon__sz {
+  font-size: 22px;
+  padding-right: 4px;
+  color: yellow;
+}
+
+.text__format {
+  display: inline;
+  font-size: 15px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  background: -webkit-gradient(linear, left top, right top, from(#ff8a00), to(#da1b60));
+  background: linear-gradient(to right, #ff8a00, #ff2070);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  font-weight: 700;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+a {
+  text-decoration: none !important;
+
+  font-weight: 600 !important;
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+.height__400{
+  height: 400px;
+}
+.show {
+  display: block !important;
+}
+
+.show--flex {
+  display: flex !important;
+}
+
+/* scroll text */
+.scroll-container {
+  /* border: 3px solid black; */
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.scroll-text {
+  /* animation properties */
+  -moz-transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  -moz-animation: my-animation 10s linear infinite;
+  -webkit-animation: my-animation 10s linear infinite;
+  animation: my-animation 10s linear infinite;
+}
+
+/* for Firefox */
+@-moz-keyframes my-animation {
+  from {
+    -moz-transform: translateX(100%);
+  }
+
+  to {
+    -moz-transform: translateX(-100%);
+  }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+  from {
+    -webkit-transform: translateX(100%);
+  }
+
+  to {
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+@keyframes my-animation {
+  from {
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+
+  to {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+
+/* loadding */
+.loading .trend__content--list--title--name,
+.loading .trend__content--list--priview,
+.loading .detail__right--list--vote,
+.loading .detail__right--list--description,
+.loading .trend__content--image,
+.loading .video__movie,
+.loading .detail__content--list--left--image,
+.loading .detail__right--list--information--span,
+.loading .bp__list--img,
+.loading .detail__right--list--title,
+.loading .detail__right--list--action--button,
+.loading .detail__content--breadcrumb,
+.loading .bp__list--ribbon--action,
+.loading .bp__list--title--EN,
+.loading .bp__list--title--VN {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.loading .detail__content--breadcrumb::before,
+.loading .detail__right--list--title::before,
+.loading .detail__right--list--vote::before,
+.loading .video__movie::before,
+.loading .detail__right--list--description::before,
+.loading .trend__content--image::before,
+.loading .detail__content--list--left--image::before,
+.loading .detail__right--list--information--span::before,
+.loading .detail__right--list--action--button::before,
+.loading .bp__list--ribbon--action::before,
+.loading .trend__content--list--title--name::before,
+.loading .trend__content--list--priview::before,
+.loading .bp__list--img::before,
+.loading .bp__list--title--EN::before,
+.loading .bp__list--title--VN::before {
+  background-color: #dddddd;
+  content: "";
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.loading .trend__content--image::after,
+.loading .detail__right--list--title::after,
+.loading .video__movie::after,
+.loading .detail__right--list--vote::after,
+.loading .detail__right--list--description::after,
+.loading .detail__right--list--information--span::after,
+.loading .detail__content--breadcrumb::after,
+.loading .detail__content--list--left--image::after,
+.loading .detail__right--list--action--button::after,
+.loading .trend__content--list--title--name::after,
+.loading .bp__list--ribbon--action::after,
+.loading .trend__content--list--priview::after,
+.loading .bp__list--img::after,
+.loading .bp__list--title--EN::after,
+.loading .bp__list--title--VN::after {
+  background: linear-gradient(to right, #dddddd, #ffffff 50%, #dddddd);
+  content: "";
+  width: 100%;
+  z-index: 100;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  animation: skeletonLoading 2s infinite alternate;
+}
+
+@keyframes skeletonLoading {
+  from {
+    left: -50%;
+  }
+
+  to {
+    left: 50%;
+  }
+}
+
+.loading .bp__list--title--EN,
+.loading .bp__list--title--VN {
+  margin: 4px 0;
+  padding: -4px;
+}
+
+.loading .bp__list--ribbon--action {
+  margin-top: 10px;
+}
+
+.loading .detail__content--breadcrumb {
+  display: inline-flex;
+  margin-top: 70px;
+}
+
+.loading .detail__right--list--vote,
+.loading .video__movie {
+  margin: 6px;
+}
+
+.loading .detail__right--list--information--span,
+.loading .detail__right--list--description {
+  margin: 4px 0;
 }

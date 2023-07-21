@@ -1,0 +1,17 @@
+.detail {
+  border-top: 1px solid #c1bfbf;
+  padding-bottom: 20px;
+  background-color: var(--content-color);
+  color: #fff;
+  &__content {
+    background-color: var(--content-color);
+  }
+}
+.detail__content___list {
+  margin-top: 20px;
+}
+@media (min-width: 768px) {
+  .detail__content {
+    margin-top: 50px;
+  }
+}

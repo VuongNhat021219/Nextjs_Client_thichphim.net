@@ -1,0 +1,59 @@
+.items {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  white-space: initial;
+  font-size: 0;
+  cursor: pointer;
+  padding: 10px 0;
+  &.active {
+    cursor: grab;
+  }
+}
+.item {
+  width: 198px;
+  padding: 10px 0;
+}
+.bp__list___img {
+  height: 280px;
+}
+.movie___row {
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .item {
+    width: 46vw;
+    padding: 10px 0;
+  }
+  .bp__list___img {
+    height: 64vw;
+  }
+  .move__list___title___icon {
+    display: none;
+  }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  .items {
+    text-align: center;
+  }
+  .mobile__trendMovie {
+    display: none;
+  }
+
+  .movie_bp__list___title___h1 {
+    font-size: 26px !important;
+  }
+}
+
+.move__list___title___icon {
+  display: none;
+}
+
+
+.nav__page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}

@@ -1,0 +1,19 @@
+.detail__content___breadcrumb {
+  padding: 6px;
+  display: flex;
+  span {
+    margin-top: 1px;
+    display: block;
+    font-weight: 600;
+  }
+  &___span {
+    color: yellow;
+  }
+}
+@media (max-width: 768px) {
+  .detail__content___breadcrumb {
+    svg {
+      font-size: 3vw;
+    }
+  }
+}

@@ -1,0 +1,239 @@
+$bg-color: #222;
+$margin: 20px;
+
+.mobile___movie___col {
+  position: relative;
+}
+
+.movie___list___top {
+  display: flex;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+.move__list___title___icon {
+  padding-top: 6px;
+  display: flex;
+
+  color: #ccc;
+  svg {
+    margin: 0 4px;
+    font-size: 26px;
+    color: #f8ac32;
+    &:hover {
+      cursor: pointer;
+      color: #b52929;
+    }
+  }
+}
+.move___list {
+  .movie___row {
+    position: relative;
+
+    &:before,
+    &:after {
+      position: absolute;
+      top: 0;
+      z-index: 1;
+
+      content: "";
+      display: block;
+      width: $margin;
+      height: 100%;
+    }
+    &:before {
+      left: 0;
+      background: linear-gradient(90deg, $bg-color, transparent);
+    }
+
+    &:after {
+      right: 0;
+      background: linear-gradient(-90deg, $bg-color, transparent);
+    }
+  }
+  color: var(___header-text);
+}
+@media (max-width: 768px) {
+  .move___list___title___name {
+    font-size: 20px;
+  }
+}
+@media (max-width: 300px) {
+  .move___list___title___name {
+    font-size: 5vw;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .movie___row {
+    width: auto;
+  }
+  .bp___list___img {
+    width: 118px;
+    height: 190px;
+  }
+}
+@media only screen and (min-width: 490px) and (max-width: 520px) {
+  .bp___list___img {
+    width: 118px;
+    height: 177px;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .movie___row {
+    width: 98vw !important;
+  }
+}
+
+.movie___row {
+  width: 82vw;
+  flex-wrap: unset !important;
+  overflow: hidden;
+}
+
+.items {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0;
+  cursor: pointer;
+  padding: 10px 0;
+  &.active {
+    cursor: grab;
+  }
+}
+
+.item {
+  display: inline-block;
+
+  user-select: none;
+  width: 140px;
+  height: auto;
+  color: $bg-color;
+  font-size: 33px;
+  font-weight: bold;
+
+  &:last-child {
+    margin-right: $margin;
+  }
+}
+.scroll___container {
+  /* border: 3px solid black; */
+  border-radius: 5px;
+  overflow: hidden;
+}
+.movie___row {
+  flex-wrap: none !important;
+}
+.movie__list___top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.move__list___title {
+  height: 32px;
+  margin-top: 6px;
+}
+.move__list___title___name {
+  display: inline-flex;
+  font-size: 15px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#ff8a00),
+    to(#da1b60)
+  );
+  background: linear-gradient(to right, #ff8a00, #ff2070);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  font-weight: 700;
+}
+
+.bp__list___title___EN,
+.bp__list___title___VN {
+  width: 100%;
+  white-space: nowrap;
+}
+.bp__list___title___EN {
+  h1 {
+    color: #b5b5be;
+    font-size: 12px;
+    padding: 2px 0;
+    &:hover {
+      color: red !important;
+      cursor: pointer;
+    }
+  }
+}
+.bp__list___title___VN {
+  h1 {
+    font-size: 14px;
+    padding: 2px 0;
+    color: #fff3f3 !important;
+    font-weight: 800;
+    &:hover {
+      color: red !important;
+      cursor: pointer;
+    }
+  }
+}
+.bp__list {
+  margin: 10px 0;
+
+  margin: 0 6px;
+  transition: transform 600ms linear;
+  &___img {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    border-radius: 10px;
+    img {
+      &:hover {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+        cursor: pointer;
+        .bp__list___title {
+          color: red;
+        }
+      }
+      height: 100%;
+      max-width: 100%;
+      transition: all 1s;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+  &___title {
+    &:hover {
+      color: red;
+      cursor: pointer;
+    }
+    overflow: hidden;
+  }
+  &___ribbon {
+    position: absolute;
+    color: rgb(255, 255, 255);
+    display: flex;
+    margin-top: 2px;
+    top: 0;
+    font-size: 10px;
+    font-weight: 800;
+    &___action {
+      background-color: #b52929;
+      padding: 2px 6px;
+      margin: 2px;
+      border-radius: 5px;
+    }
+  }
+}
+.scroll___container {
+  /* border: 3px solid black; */
+  border-radius: 5px;
+  overflow: hidden;
+}

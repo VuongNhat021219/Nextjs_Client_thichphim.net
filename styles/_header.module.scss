@@ -1,0 +1,451 @@
+@keyframes spin {
+  0% {
+    color: #d95454;
+    transform: rotate(0deg);
+  }
+  100% {
+    color: yellow;
+
+    transform: rotate(360deg);
+  }
+}
+.header {
+  height: 62px;
+  background-color: var(--content-bgr);
+  color: var(--header-text);
+  &__logo {
+    h3 {
+      line-height: 68px;
+      background: linear-gradient(to right, #ff8a00, #ff2070);
+      -webkit-background-clip: text; /* Safari, Chrome, Opera */
+      -moz-background-clip: text; /* Firefox */
+      background-clip: text;
+      -webkit-text-fill-color: transparent; /* Safari, Chrome, Opera */
+      -moz-text-fill-color: transparent; /* Firefox */
+      font-weight: 700;
+    }
+    &___star {
+      svg {
+        animation: spin 6s linear infinite;
+      }
+    }
+  }
+  &__content {
+    background-color: var(--header-bgr);
+    height: 62px;
+  }
+  &__search {
+    height: 100%;
+    &___form {
+      position: relative;
+      margin-top: 17px;
+      max-width: 460px;
+      float: left;
+    }
+    input {
+      border-radius: 10px;
+      width: 340px;
+      padding: 4px;
+      padding-left: 30px;
+      color: #000;
+    }
+    &___button {
+      color: #000;
+      border: none;
+
+      background: none;
+      left: 0;
+      margin-top: 3px;
+      position: absolute;
+      padding: 4px 6px;
+      margin-right: 6px;
+      svg {
+        padding-bottom: 2px;
+        font-weight: 800;
+      }
+    }
+  }
+  &__user {
+    display: flex;
+    line-height: 62px;
+    float: right;
+    p {
+      font-size: 14px;
+      padding: 6px;
+    }
+  }
+}
+
+// # width nhỏ hơn 479px
+@media only screen and (max-width: 479px) {
+  .mobile__input___search___open {
+    -webkit-transform: none !important;
+    transform: none !important;
+    transition: transform 600ms linear;
+  }
+  .mobile__input___search {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(150%);
+    transition: transform 600ms linear;
+    position: fixed;
+  }
+  .pc__result___search {
+    display: none;
+  }
+  .mobile__result___search {
+    position: absolute;
+    top: 54px;
+    right: 10px;
+    background-color: #fff;
+    color: #000;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 198px;
+    padding: 10px 6px;
+    z-index: 10;
+    &___top {
+      display: flex;
+      border-bottom: 2px solid #000;
+      h3 {
+        font-size: 13px;
+      }
+      span {
+        color: rgb(255, 0, 0);
+        font-size: 12px;
+        font-weight: 600;
+        padding-left: 4px;
+        margin-bottom: 8px;
+      }
+    }
+    &___content {
+      padding: 10px 0;
+      display: flex;
+      &___image {
+        width: 60px;
+        img {
+          height: 16vw;
+        }
+      }
+      &___list {
+        padding-left: 6px;
+        &___title___VN {
+          color: #ff2070;
+          font-size: 14px;
+          font-weight: 600;
+        }
+        &___title___english {
+          color: #ccc;
+          font-size: 12px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  .mobile__input___search {
+    top: 0;
+    right: 10px;
+    .header__search___form {
+      float: left;
+
+      input {
+        width: 200px;
+      }
+    }
+    .header__search___button {
+      svg {
+        margin-top: 2px;
+        font-size: 20px;
+      }
+    }
+    .header__close___button {
+      background: none;
+      svg {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+  .pc_search,
+  .pc__action {
+    display: none;
+  }
+  .mobile__menu {
+    display: block;
+    svg {
+      font-size: 26px;
+      margin-top: 18px;
+    }
+  }
+  .mobile__search {
+    svg {
+      float: right;
+      font-size: 25px;
+      margin-right: 12px;
+      margin-top: 22px;
+    }
+    display: block;
+  }
+  .header__logo {
+    &:hover {
+      cursor: pointer;
+    }
+    h3 {
+      font-size: 5vw;
+    }
+  }
+}
+@media only screen and (max-width: 300px) {
+  .header__logo {
+    h3 {
+      font-size: 4vw;
+    }
+  }
+}
+// # Mobile
+@media only screen and (min-width: 480px) {
+  .mobile__input___search___open {
+    -webkit-transform: none !important;
+    transform: none !important;
+    transition: transform 600ms linear;
+  }
+  .mobile__input___search {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(150%);
+    transition: transform 600ms linear;
+    position: fixed;
+  }
+  .mobile__result___search {
+    position: absolute;
+    top: 52px;
+    right: 80px;
+    background-color: #fff;
+    color: #000;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 198px;
+    padding: 10px 6px;
+    z-index: 10;
+    &___top {
+      display: flex;
+      border-bottom: 2px solid #000;
+      h3 {
+        font-size: 13px;
+      }
+      span {
+        color: rgb(255, 0, 0);
+        font-size: 12px;
+        font-weight: 600;
+        padding-left: 4px;
+        margin-bottom: 8px;
+      }
+    }
+    &___content {
+      padding: 10px 0;
+      display: flex;
+      &___image {
+        img {
+          width: 60px;
+          height: 60px;
+        }
+      }
+      &___list {
+        padding-left: 6px;
+        &___title___VN {
+          color: #ff2070;
+          font-size: 14px;
+          font-weight: 600;
+        }
+        &___title___english {
+          color: #ccc;
+          font-size: 12px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  @media (max-width: 650px) {
+    .mobile__input___search,
+    .mobile__result___search {
+      right: 25px !important;
+    }
+  }
+  .mobile__input___search___open {
+    -webkit-transform: none !important;
+    transform: none !important;
+    transition: transform 600ms linear;
+  }
+  .mobile__input___search {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(150%);
+    transition: transform 600ms linear;
+    position: fixed;
+  }
+  .mobile__input___search {
+    top: 0;
+    right: 80px;
+    .header__search___form {
+      input {
+        width: 200px;
+      }
+    }
+    .header__search___button {
+      svg {
+        margin-top: 2px;
+        font-size: 20px;
+      }
+    }
+    .header__close___button {
+      background: none;
+      svg {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+  .header__logo {
+    h3 {
+      font-size: 20px;
+    }
+  }
+  .mobile__search {
+    svg {
+      float: right;
+      font-size: 25px;
+      margin-right: 10px;
+      margin-top: 22px;
+    }
+    display: block;
+  }
+  .mobile__menu {
+    display: block;
+    svg {
+      font-size: 26px;
+      margin-top: 18px;
+    }
+  }
+  .pc_search,
+  .pc__action,
+  .pc__result___search {
+    display: none;
+  }
+}
+
+// # Tablet
+@media only screen and (min-width: 768px) {
+  .pc_search {
+    position: relative;
+  }
+  .header__close___button {
+    background: none;
+    border: none;
+    color: #fff;
+    svg {
+      font-size: 24px;
+      font-weight: 600;
+      position: absolute;
+      top: 6px;
+      left: 313px;
+      color: #000;
+    }
+  }
+  .pc__result___search {
+    display: block;
+    position: absolute;
+    top: 52px;
+    left: 12px;
+    background-color: #fff;
+    color: #000;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 340px;
+    padding: 10px 6px;
+    z-index: 10;
+    &___top {
+      display: flex;
+      border-bottom: 2px solid #000;
+      h3 {
+        font-size: 13px;
+      }
+      span {
+        color: rgb(255, 0, 0);
+        font-size: 12px;
+        font-weight: 600;
+        padding-left: 4px;
+        margin-bottom: 8px;
+      }
+    }
+    &___content {
+      padding: 10px 0;
+      display: flex;
+      &___image {
+        img {
+          width: 60px;
+          height: 60px;
+        }
+      }
+      &___list {
+        padding-left: 6px;
+        &___title___VN {
+          color: #ff2070;
+          font-size: 14px;
+          font-weight: 600;
+        }
+        &___title___english {
+          color: #ccc;
+          font-size: 12px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  .header__logo {
+    h3 {
+      font-size: 16px;
+    }
+  }
+  .mobile__menu,
+  .mobile__search,
+  .mobile__input___search,
+  .mobile__result___search {
+    display: none;
+  }
+  .pc_search,
+  .pc__action {
+    display: block;
+  }
+  .header__search___button {
+    top: 0;
+  }
+}
+
+// # Desktop
+@media only screen and (min-width: 992px) {
+  .header__search input {
+    width: 340px;
+  }
+  .mobile__menu,
+  .mobile__search {
+    display: none;
+  }
+  .pc_search,
+  .pc__action {
+    display: block;
+  }
+}
+
+// # Huge
+@media only screen and (min-width: 1280px) {
+  .header__search input {
+    width: 340px;
+  }
+  .mobile__menu,
+  .mobile__search {
+    display: none;
+  }
+  .pc__action,
+  .pc_search {
+    display: block;
+  }
+}
