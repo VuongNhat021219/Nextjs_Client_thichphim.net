@@ -1,7 +1,9 @@
 import React from "react";
 import Layout from "../../components/Layout";
 import Link from "next/link";
-import Image from 'next/image';
+import Image from "next/image";
+import { getOnePhimHinhSu, getAllPhimHinhSu } from "@/pages/api/getData";
+
 import { Container, Row, Col } from "react-bootstrap";
 import { BiMoviePlay } from "react-icons/bi";
 import styles from "@/styles/_home.module.scss";
@@ -157,11 +159,7 @@ export default function PhimHinhSu({ data, allTrendMovieDatas }) {
 export async function getStaticProps({ params }) {
   const { page } = params;
 
-  // Xử lý dữ liệu cho trang phim hành động với `page` cụ thể
-  const res = await fetch(
-    `api/v1/phim-hinh-su?page=${page}`
-  );
-  const data = await res.json();
+  const data = await getOnePhimHinhSu(page);
 
   const allTrendMovieDatas = await getTrendMovieData();
 
@@ -174,10 +172,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(
-    `api/v1/all-movie/phim-hinh-su`
-  );
-  const data = await res.json();
+  const data = await getAllPhimHinhSu();
 
   const totalMovies = data.length;
   const totalPages = Math.ceil(totalMovies / 24);

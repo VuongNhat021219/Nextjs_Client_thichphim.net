@@ -251,8 +251,28 @@ export async function getAllPhimHanhDong() {
     console.log("Error", error);
   }
 }
+export async function getOnePhimHinhSu(page) {
+  try {
+    const { data } = await axios.get(
+      `http://localhost:3000/api/v1/phim-hinh-su?page=${page}`
+    );
+    return data;
+  } catch (error) {
+    console.log("Error", error);
+  }
+}
 
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+export async function getAllPhimHinhSu() {
+  try {
+    const { data } = await axios.get(
+      `http://localhost:3000/api/v1/all-movie/phim-hinh-su`
+    );
+    return data;
+  } catch (error) {
+    console.log("Error", error);
+  }
+}
+
 
 export async function getOnePhimHocDuong(page) {
   try {
