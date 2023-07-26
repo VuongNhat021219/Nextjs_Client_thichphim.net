@@ -5,14 +5,14 @@ let database;
 
 exports.connectToDatabase = async () => {
   const uri = `mongodb+srv://vuongdev:Vuong021219@cluster0.gmxn7nw.mongodb.net/?retryWrites=true&w=majority`;
-  client = new MongoClient(uri, {
+  // Create a MongoClient with a MongoClientOptions object to set the Stable API version
+  const client = new MongoClient(uri, {
     serverApi: {
       version: ServerApiVersion.v1,
       strict: true,
       deprecationErrors: true,
     },
   });
-
   try {
     await client.connect();
     database = client.db("websitephim"); // Thay "your_database_name" bằng tên của database bạn muốn sử dụng
@@ -44,3 +44,5 @@ exports.closeConnection = async () => {
     console.log("Đã đóng kết nối tới MongoDB!");
   }
 };
+
+
