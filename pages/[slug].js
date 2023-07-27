@@ -38,7 +38,7 @@ export default function SlugDetail() {
       try {
         if (slug !== "[slug]" && slug !== undefined) {
           const response = await getOneMovieSlug(slug);
-          return setMovie(response.data);
+          return setMovie(response.data.document);
         }
       } catch (error) {
         // router.push("/not-found");

@@ -10,12 +10,10 @@ import {
 } from "react-icons/io";
 
 export default function MovieList(props) {
-
   const movies = props.DataMovie;
   const title = props.title;
   const [rowSide, setRowSide] = useState(0);
   const numberRow = 375;
-
   const onClickRowLeft = () => {
     setRowSide((prevRowSide) => prevRowSide + numberRow);
   };
@@ -95,7 +93,7 @@ export default function MovieList(props) {
           onMouseUp={handleMouseUp}
           onTouchEnd={handleMouseUp}
         >
-          {movies.map((movie, index) => (
+          {movies.documents.map((movie, index) => (
             <div
               className={`${MovieListCSS.item} ${
                 props.PhimMoiCSS === undefined ? "" : props.PhimMoiCSS.item
@@ -106,7 +104,6 @@ export default function MovieList(props) {
                 PhimMoiCSS={props.PhimMoiCSS}
                 rowSide={rowSide}
                 movie={movie.movie}
-                
               />
             </div>
           ))}

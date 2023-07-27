@@ -24,7 +24,7 @@ export default function WatchTV() {
         if (slug !== undefined && slug !== "[slug]") {
           const response = await getOneMovieSlug(slug);
 
-          return setMovie(response.data);
+          return setMovie(response.data.document);
         }
       } catch (error) {
         console.log("lỗi", error);

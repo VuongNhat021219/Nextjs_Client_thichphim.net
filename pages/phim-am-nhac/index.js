@@ -50,7 +50,7 @@ export default function PhimCaNhacIndex({ data, allTrendMovieDatas }) {
 
                   {allTrendMovieDatas === undefined
                     ? ""
-                    : allTrendMovieDatas.map((trendmovie, index) => (
+                    : allTrendMovieDatas.documents.map((trendmovie, index) => (
                         <Link
                           href={`/phim-moi/${trendmovie.movie.slug}`}
                           key={index}

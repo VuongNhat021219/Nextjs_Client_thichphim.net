@@ -26,6 +26,7 @@ import SliderCSS from "@/styles/_navbar.module.scss";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { BiSolidDiscount, BiLogOut, BiSearchAlt } from "react-icons/bi";
 import axios from "axios";
+import { searchMovie } from "@/pages/api/getData";
 
 const Header = () => {
   const [searchResult, setSearchResult] = useState([]);
@@ -53,10 +54,8 @@ const Header = () => {
 
   async function handleSearch() {
     try {
-      const response = await axios.get(
-        `http://localhost:5000/api/v1/tim-kiem?key=${inputValue}`
-      );
-      setSearchResult(response.data);
+      const response = await searchMovie(inputValue);
+      setSearchResult(response.documents);
     } catch (error) {
       console.log("Error searching:", error);
     }

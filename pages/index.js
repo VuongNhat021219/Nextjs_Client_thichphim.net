@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from "../components/Layout";
 import Link from "next/link";
+import Image from "next/image";
 import { Container, Row, Col } from "react-bootstrap";
 import Loader from "@/components/Loader";
 import { BiMoviePlay } from "react-icons/bi";
@@ -50,14 +51,16 @@ export default function Home({
                 {allTrendMovieDatas === undefined ? (
                   <Loader />
                 ) : (
-                  allTrendMovieDatas.map((trendmovie, index) => (
+                  allTrendMovieDatas.documents.map((trendmovie, index) => (
                     <Link
                       href={`/chi-tiet-phim/${trendmovie.movie.slug}`}
                       key={index}
                     >
                       <div className={trendMovieCSS.trend__content}>
                         <div className={trendMovieCSS.trend__content___image}>
-                          <img
+                          <Image
+                            width={300}
+                            height={300}
                             src={`${trendmovie.movie.thumb_url}`}
                             alt={trendmovie.movie.name}
                           />

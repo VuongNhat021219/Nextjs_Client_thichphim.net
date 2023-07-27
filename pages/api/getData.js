@@ -31,7 +31,9 @@ const axios = require("axios");
 
 export async function getTrendMovieData() {
   try {
-    const { data } = await axios.get(`http://localhost:3000/api/v1/view`);
+    const { data } = await axios.post(
+      `http://localhost:3000/api/v1/view-movie?page=1`
+    );
     return data;
   } catch (error) {
     console.log("lỗi rồi", error);
@@ -564,3 +566,16 @@ export async function getAllPhimVoThuat() {
     console.log("Error", error);
   }
 }
+
+export async function searchMovie(search) {
+  try {
+    const { data } = await axios.get(
+      `http://localhost:3000/api/v1/tim-kiem?key=${search}`
+    );
+    return data;
+  } catch (error) {
+    console.log("Error", error);
+  }
+}
+
+

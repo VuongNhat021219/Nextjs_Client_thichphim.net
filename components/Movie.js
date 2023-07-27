@@ -27,7 +27,7 @@ export default function Movie(props) {
 
   return (
     <>
-      <Link href={`/chi-tiet-phim/${movie.slug}`}>
+      <Link href={`/${movie.slug}`}>
         <div
           className={MovieCSS.bp__list}
           style={{ transform: `translateX(${props.rowSide}px)` }}
