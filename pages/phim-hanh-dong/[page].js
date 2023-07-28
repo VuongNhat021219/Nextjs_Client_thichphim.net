@@ -52,7 +52,7 @@ export default function PhimHanhDong({ data, allTrendMovieDatas }) {
                     ? ""
                     : allTrendMovieDatas.documents.map((trendmovie, index) => (
                         <Link
-                          href={`/phim-moi/${trendmovie.movie.slug}`}
+                           href={`/${trendmovie.movie.slug}`}
                           key={index}
                         >
                           <div className={trendMovieCSS.trend__content}>

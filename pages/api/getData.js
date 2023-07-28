@@ -1,34 +1,5 @@
 const axios = require("axios");
 
-// const url =
-//   "https://ap-southeast-1.aws.data.mongodb-api.com/app/data-kdnvd/endpoint/data/v1/action/findOne";
-// const apiKey =
-//   "7L2iirPvWtKlc1L2Dy3DYrf2MPlf92cZwHEKaINL024Spj6Tb4huB9utAj7cfSjz";
-
-// const data = {
-//   collection: "movieon",
-//   database: "websitephim",
-//   dataSource: "Cluster0",
-//   filter: {
-//     "movie.name": { $eq: "Yêu là mù quáng: Brazil (Phần 3)" },
-//   },
-// };
-
-// const headers = {
-//   "Content-Type": "application/json",
-//   "Access-Control-Request-Headers": "*",
-//   "api-key": apiKey,
-// };
-
-// axios
-//   .post(url, data, { headers: headers })
-//   .then((response) => {
-//     console.log("Response:", response.data);
-//   })
-//   .catch((error) => {
-//     console.error("Error:", error.response.status, error.response.data);
-//   });
-
 export async function getTrendMovieData() {
   try {
     const { data } = await axios.post(
@@ -577,5 +548,3 @@ export async function searchMovie(search) {
     console.log("Error", error);
   }
 }
-
-
