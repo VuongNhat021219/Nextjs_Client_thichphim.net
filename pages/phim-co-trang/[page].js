@@ -34,7 +34,6 @@ export default function PhimCoTrang({ data, allTrendMovieDatas }) {
           >
             <Row style={{ borderTop: "1px solid #3e3d3d" }}>
               <Col
-                xs={2}
                 className={`${styles.mobile__trendMovie} ${
                   PhimMoiCSS === undefined ? "" : PhimMoiCSS.mobile__trendMovie
                 }`}

@@ -36,7 +36,7 @@ export default function PhimTinhCamIndex({ data, allTrendMovieDatas }) {
           >
             <Row style={{ borderTop: "1px solid #3e3d3d" }}>
               <Col
-                xs={2}
+                
                 className={`${styles.mobile__trendMovie} ${
                   PhimMoiCSS === undefined ? "" : PhimMoiCSS.mobile__trendMovie
                 }`}
@@ -53,10 +53,7 @@ export default function PhimTinhCamIndex({ data, allTrendMovieDatas }) {
                   {allTrendMovieDatas === undefined
                     ? ""
                     : allTrendMovieDatas.documents.map((trendmovie, index) => (
-                        <Link
-                           href={`/${trendmovie.movie.slug}`}
-                          key={index}
-                        >
+                        <Link href={`/${trendmovie.movie.slug}`} key={index}>
                           <div className={trendMovieCSS.trend__content}>
                             <div
                               className={trendMovieCSS.trend__content___image}
