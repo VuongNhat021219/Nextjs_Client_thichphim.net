@@ -93,9 +93,11 @@ a {
 .hidden {
   display: none !important;
 }
-.height__400{
+
+.height__400 {
   height: 400px;
 }
+
 .show {
   display: block !important;
 }

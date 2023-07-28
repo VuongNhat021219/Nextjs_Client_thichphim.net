@@ -33,6 +33,11 @@ export default function WatchTV() {
     };
     fetchMovie();
   }, [slug]);
+  // useEffect(() => {
+  //   // Sử dụng jQuery trong useEffect để thực hiện các thao tác cần thiết
+  //   // Ví dụ: thêm sự kiện click cho một phần tử HTML
+  //   $(".art-control-pip").hide();
+  // }, []);
 
   const iframeRef = useRef(null);
 

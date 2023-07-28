@@ -48,3 +48,10 @@
 .server__video___list___page___active {
   background: #ba0000;
 }
+
+@media (max-width: 768px) {
+  .button__show___full {
+    display: none;
+  }
+  
+}

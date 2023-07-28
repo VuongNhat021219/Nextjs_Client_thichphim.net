@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import Layout from "../components/Layout";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,6 +8,12 @@ import { BiMoviePlay } from "react-icons/bi";
 import styles from "@/styles/_home.module.scss";
 import trendMovieCSS from "@/styles/_trendmovie.module.scss";
 import MovieList from "@/components/MovieList";
+import MovieListCSS from "@/styles/_movielist.module.scss";
+import { BiCameraMovie } from "react-icons/bi";
+import {
+  IoMdArrowDropleftCircle,
+  IoMdArrowDroprightCircle,
+} from "react-icons/io";
 import {
   getTrendMovieData,
   getHorrorMovie,
@@ -25,6 +31,15 @@ export default function Home({
   allgetRomanceMovie,
   allgetComedyMovie,
 }) {
+  const [rowSide, setRowSide] = useState(0);
+  const numberRow = 375;
+  const onClickRowLeft = () => {
+    setRowSide((prevRowSide) => prevRowSide + numberRow);
+  };
+
+  const onClickRowRight = () => {
+    setRowSide((prevRowSide) => prevRowSide - numberRow);
+  };
   return (
     <Layout>
       <div
@@ -46,16 +61,24 @@ export default function Home({
                     <BiMoviePlay className="icon__sz" />
                     Phim nổi bật
                   </h3>
+                  {/* <div className={`${MovieListCSS.move__list___title___icon}`}>
+                    <IoMdArrowDropleftCircle
+                      onClick={onClickRowLeft}
+                      className={MovieListCSS.move__list___title___icon___left}
+                    />
+                    ||
+                    <IoMdArrowDroprightCircle
+                      onClick={onClickRowRight}
+                      className={MovieListCSS.move__list___title___icon___right}
+                    />
+                  </div> */}
                 </div>
 
                 {allTrendMovieDatas === undefined ? (
                   <Loader />
                 ) : (
                   allTrendMovieDatas.documents.map((trendmovie, index) => (
-                    <Link
-                      href={`/${trendmovie.movie.slug}`}
-                      key={index}
-                    >
+                    <Link href={`/${trendmovie.movie.slug}`} key={index}>
                       <div className={trendMovieCSS.trend__content}>
                         <div className={trendMovieCSS.trend__content___image}>
                           <Image
