@@ -49,6 +49,9 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // Sử dụng router chính
+// Sử dụng router chính
+// Sử dụng router chính
+// Sử dụng router chính
 app.use("/", mainRoutes);
 
 // Sử dụng api
