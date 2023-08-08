@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "@/styles/_header.module.scss";
 import Link from "next/link";
 import Image from "next/image";
+import Spinner from 'react-bootstrap/Spinner';
 import { Container, Row, Col, Nav, Navbar } from "react-bootstrap";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
@@ -25,8 +26,10 @@ import SliderCSS from "@/styles/_navbar.module.scss";
 
 import { RiLockPasswordFill } from "react-icons/ri";
 import { BiSolidDiscount, BiLogOut, BiSearchAlt } from "react-icons/bi";
-import axios from "axios";
-import { searchMovie } from "@/pages/api/getData";
+import {
+ Search
+} from "@/pages/api/FunGetData";
+
 
 const Header = () => {
   const [searchResult, setSearchResult] = useState([]);
@@ -54,8 +57,8 @@ const Header = () => {
 
   async function handleSearch() {
     try {
-      const response = await searchMovie(inputValue);
-      setSearchResult(response.documents);
+      const response = await Search(inputValue);
+      setSearchResult(response);
     } catch (error) {
       console.log("Error searching:", error);
     }
@@ -120,12 +123,17 @@ const Header = () => {
                 <h3>Kết quả:</h3>
                 <span>{inputValue}</span>
               </div>
-              {searchResult.map((item, index) => (
+              {searchResult.length === 0 ? (
+                 <Spinner animation="border" role="status">
+                 <span className="visually-hidden">Loading...</span>
+               </Spinner>
+              ):(
+              searchResult.map((item, index) => (
                 <div
                   className={styles.mobile__result___search___content}
                   key={index}
-                >
-                  <div
+                > 
+                <div
                     className={styles.mobile__result___search___content___image}
                   >
                     <Image
@@ -135,6 +143,8 @@ const Header = () => {
                       alt={item.movie.name}
                     />
                   </div>
+                <Link href={`/${item.movie.slug}`}>
+                
                   <div
                     className={styles.mobile__result___search___content___list}
                   >
@@ -154,8 +164,11 @@ const Header = () => {
                     </div>
                     <div style={{ fontSize: "3vw" }}>{item.movie.time}</div>
                   </div>
+                </Link>
                 </div>
-              ))}
+              ))
+              )}
+
             </div>
           </Col>
           <Col md={6} className={styles.pc_search}>
@@ -188,38 +201,47 @@ const Header = () => {
                 <h3>Kết quả:</h3>
                 <span>{inputValue}</span>
               </div>
-              {searchResult.map((item, index) => (
-                <div
-                  className={styles.pc__result___search___content}
-                  key={index}
-                >
-                  <div className={styles.pc__result___search___content___image}>
-                    <Image
-                      width={300}
-                      height={300}
-                      src={item.movie.thumb_url}
-                      alt={item.movie.name}
-                    />
-                  </div>
-                  <div className={styles.pc__result___search___content___list}>
-                    <div
-                      className={
-                        styles.pc__result___search___content___list___title___VN
-                      }
-                    >
-                      {item.movie.name}
+              {searchResult.length === 0 ? (
+                 <Spinner animation="border" role="status">
+                 <span className="visually-hidden">Loading...</span>
+               </Spinner>
+              ):(
+                searchResult.map((item, index) => (
+                  <div
+                    className={styles.pc__result___search___content}
+                    key={index}
+                  >
+                    <div className={styles.pc__result___search___content___image}>
+                      <Image
+                        width={300}
+                        height={300}
+                        src={item.movie.thumb_url}
+                        alt={item.movie.name}
+                      />
                     </div>
-                    <div
-                      className={
-                        styles.pc__result___search___content___list___title___english
-                      }
-                    >
-                      {item.movie.origin_name}
+                    <Link href={`/${item.movie.slug}`}>
+                    <div className={styles.pc__result___search___content___list}>
+                      <div
+                        className={
+                          styles.pc__result___search___content___list___title___VN
+                        }
+                      >
+                        {item.movie.name}
+                      </div>
+                      <div
+                        className={
+                          styles.pc__result___search___content___list___title___english
+                        }
+                      >
+                        {item.movie.origin_name}
+                      </div>
+                      <div style={{ fontSize: "0.6vw" }}>{item.movie.time}</div>
                     </div>
-                    <div style={{ fontSize: "0.6vw" }}>{item.movie.time}</div>
+                    </Link>
                   </div>
-                </div>
-              ))}
+                ))
+
+              )}
             </div>
           </Col>
           <Col md={2} sm={2} className={styles.pc__action}>

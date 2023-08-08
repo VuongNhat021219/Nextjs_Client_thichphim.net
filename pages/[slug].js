@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Container, Row, Col } from "react-bootstrap";
 import Loader from "@/components/Loader";
-import { getOneMovieSlug } from "@/pages/api/getData";
+import { getOneMovieSlug } from "@/pages/api/FunGetData";
 import { useRouter } from "next/router";
 import url from "url";
 import slugDetailCSS from "@/styles/_slug_detail.module.scss";
@@ -38,10 +38,11 @@ export default function SlugDetail() {
       try {
         if (slug !== "[slug]" && slug !== undefined) {
           const response = await getOneMovieSlug(slug);
-          return setMovie(response.data.document);
+         
+          return setMovie(response);
         }
       } catch (error) {
-        // router.push("/not-found");
+        router.push("/not-found");
         console.log("lỗi", error);
       }
     };
@@ -58,9 +59,7 @@ export default function SlugDetail() {
             } `}
           >
             <Row style={{ borderTop: "1px solid #3e3d3d" }}>
-              {movie === null ? (
-                <Loader />
-              ) : (
+              {movie === null ? "" : (
                 <Col>
                   <Breadcrumb
                     category={
@@ -109,9 +108,7 @@ export default function SlugDetail() {
                     </div>
                   </Col>
                 )}
-                {movie === null ? (
-                  <Loader />
-                ) : (
+                {movie === null ? "" : (
                   <Col className={detailCSS.mobile__col___right}>
                     <div className={detailCSS.detail__content___list___right}>
                       <div className={detailCSS.detail__right___list}>

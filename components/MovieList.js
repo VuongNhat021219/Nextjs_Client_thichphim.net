@@ -93,7 +93,7 @@ export default function MovieList(props) {
           onMouseUp={handleMouseUp}
           onTouchEnd={handleMouseUp}
         >
-          {movies.documents.map((movie, index) => (
+          {movies.map((movie, index) => (
             <div
               className={`${MovieListCSS.item} ${
                 props.PhimMoiCSS === undefined ? "" : props.PhimMoiCSS.item

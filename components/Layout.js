@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
           Thích Phim | Phim Mới | Phim VietSub | Phim Chiếu Rạp | Phim Lẻ
         </title>
         {/* Chuyển đổi thẻ script sang JSX */}
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" />
+        {/* <script src="https://code.jquery.com/jquery-3.6.0.min.js" /> */}
       </Head>
       <Header />
       <main>{children}</main>

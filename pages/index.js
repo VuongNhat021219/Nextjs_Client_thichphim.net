@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import Layout from "../components/Layout";
 import Link from "next/link";
 import Image from "next/image";
@@ -14,22 +14,18 @@ import {
   IoMdArrowDropleftCircle,
   IoMdArrowDroprightCircle,
 } from "react-icons/io";
-import {
-  getTrendMovieData,
-  getHorrorMovie,
-  getActionMovie,
-  getFantasyMovie,
-  getRomanceMovie,
-  getComedyMovie,
-} from "./api/getData";
 
+import {
+  getSlugMovie,
+  getFeaturedMovie
+} from "./api/FunGetData";
 export default function Home({
-  allTrendMovieDatas,
-  allgetHorrorMovie,
+  MovieNoiBat,
+  MovieKinhDi,
   allgetActionMovie,
-  allgetFantasyMovie,
-  allgetRomanceMovie,
-  allgetComedyMovie,
+  MovieVienTuong,
+  MovieTinhCam,
+  MovieHaiHuoc
 }) {
   const [rowSide, setRowSide] = useState(0);
   const numberRow = 375;
@@ -40,11 +36,13 @@ export default function Home({
   const onClickRowRight = () => {
     setRowSide((prevRowSide) => prevRowSide - numberRow);
   };
+ 
+
   return (
     <Layout>
       <div
         className={`${styles.home__content} ${
-          allgetHorrorMovie === undefined ? "height__400" : ""
+          MovieKinhDi === undefined ? "height__400" : ""
         } `}
       >
         <Container
@@ -61,7 +59,7 @@ export default function Home({
                     <BiMoviePlay className="icon__sz" />
                     Phim nổi bật
                   </h3>
-                  {/* <div className={`${MovieListCSS.move__list___title___icon}`}>
+                  <div className={`${MovieListCSS.move__list___title___icon}`}>
                     <IoMdArrowDropleftCircle
                       onClick={onClickRowLeft}
                       className={MovieListCSS.move__list___title___icon___left}
@@ -71,13 +69,11 @@ export default function Home({
                       onClick={onClickRowRight}
                       className={MovieListCSS.move__list___title___icon___right}
                     />
-                  </div> */}
+                  </div>
                 </div>
 
-                {allTrendMovieDatas === undefined ? (
-                  <Loader />
-                ) : (
-                  allTrendMovieDatas.documents.map((trendmovie, index) => (
+                {MovieNoiBat === undefined ? "": (
+                  MovieNoiBat.map((trendmovie, index) => (
                     <Link href={`/${trendmovie.movie.slug}`} key={index}>
                       <div className={trendMovieCSS.trend__content}>
                         <div className={trendMovieCSS.trend__content___image}>
@@ -142,9 +138,11 @@ export default function Home({
             </Col>
             <Col>
               <Row>
-                {allgetActionMovie === undefined ? (
+                {allgetActionMovie.length === 0 ? 
+                (
                   <Loader />
-                ) : (
+                )
+                 : (
                   <Col>
                     <MovieList
                       title="Phim hành động"
@@ -152,22 +150,23 @@ export default function Home({
                     />
                     <MovieList
                       title="Phim kinh dị"
-                      DataMovie={allgetHorrorMovie}
+                      DataMovie={MovieKinhDi}
                     />
                     <MovieList
                       title="Phim viễn tưởng"
-                      DataMovie={allgetFantasyMovie}
+                      DataMovie={MovieVienTuong}
                     />
                     <MovieList
                       title="Phim tình cảm"
-                      DataMovie={allgetRomanceMovie}
+                      DataMovie={MovieTinhCam}
                     />
                     <MovieList
                       title="Phim hài hước"
-                      DataMovie={allgetComedyMovie}
+                      DataMovie={MovieHaiHuoc}
                     />
                   </Col>
                 )}
+               
               </Row>
             </Col>
           </Row>
@@ -177,28 +176,26 @@ export default function Home({
   );
 }
 export async function getStaticProps() {
-  try {
-    const allTrendMovieDatas = await getTrendMovieData();
-    const allgetActionMovie = await getActionMovie();
-    const allgetHorrorMovie = await getHorrorMovie();
-    const allgetFantasyMovie = await getFantasyMovie();
-    const allgetRomanceMovie = await getRomanceMovie();
-    const allgetComedyMovie = await getComedyMovie();
+ 
+  const allgetActionMovie = await getSlugMovie(`phim-hanh-dong`,1);
+  const MovieKinhDi = await getSlugMovie(`phim-kinh-di`,2);
+  const MovieVienTuong = await getSlugMovie(`phim-vien-tuong`,2);
+  const MovieTinhCam = await getSlugMovie(`phim-tinh-cam`,2);
+  const MovieHaiHuoc = await getSlugMovie(`phim-hai-huoc`,1);
+  const MovieNoiBat = await getFeaturedMovie(1);
 
-    return {
-      props: {
-        allTrendMovieDatas,
-        allgetHorrorMovie,
-        allgetActionMovie,
-        allgetFantasyMovie,
-        allgetRomanceMovie,
-        allgetComedyMovie,
-      },
-    };
-  } catch (error) {
-    console.log("Error fetching data:", error);
-    return {
-      notFound: true,
-    };
-  }
+  
+
+  return {
+    props: {
+      allgetActionMovie,
+      MovieKinhDi,
+      MovieVienTuong,
+      MovieTinhCam,
+      MovieHaiHuoc,
+      MovieNoiBat
+    },
+  };
+
+  
 }
