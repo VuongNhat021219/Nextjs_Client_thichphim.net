@@ -9,27 +9,29 @@ import styles from "@/styles/_home.module.scss";
 import trendMovieCSS from "@/styles/_trendmovie.module.scss";
 import MovieList from "@/components/MovieList";
 import {
-  getTrendMovieData,
-  getHorrorMovie,
-  getActionMovie,
-  getFantasyMovie,
-  getRomanceMovie,
-  getComedyMovie,
-} from "./api/getData";
+  getDataMoviesUpdate,
+
+} from "@/pages/api/getData";
 
 export default function Home({
-  allTrendMovieDatas,
-  allgetHorrorMovie,
-  allgetActionMovie,
-  allgetFantasyMovie,
-  allgetRomanceMovie,
-  allgetComedyMovie,
+  allgetDataMoviesUpdate,
+  allgetDataMoviesUpdate1,
+  allgetDataMoviesUpdate2,
+  allgetDataMoviesUpdate3,
+  allgetDataMoviesUpdate4,
+  allgetDataMoviesUpdate5,
+  allgetDataMoviesUpdate6,
+  allgetDataMoviesUpdate7,
+  allgetDataMoviesUpdate8,
+  allgetDataMoviesUpdate9,
 }) {
+  const pathImage = allgetDataMoviesUpdate.pathImage;
+ 
   return (
     <Layout>
       <div
         className={`${styles.home__content} ${
-          allgetHorrorMovie === undefined ? "height__400" : ""
+          allgetDataMoviesUpdate === null ? "height__400" : ""
         } `}
       >
         <Container
@@ -48,101 +50,113 @@ export default function Home({
                   </h3>
                 </div>
 
-                {allTrendMovieDatas === undefined ? (
-                  <Loader />
-                ) : (
-                  allTrendMovieDatas.documents.map((trendmovie, index) => (
-                    <Link
-                      href={`/${trendmovie.movie.slug}`}
-                      key={index}
-                    >
-                      <div className={trendMovieCSS.trend__content}>
-                        <div className={trendMovieCSS.trend__content___image}>
-                          <Image
-                            width={300}
-                            height={300}
-                            src={`${trendmovie.movie.thumb_url}`}
-                            alt={trendmovie.movie.name}
-                          />
-                          <div
-                            className={trendMovieCSS.trend__content___ribbon}
-                          >
+                {allgetDataMoviesUpdate4 === null
+                  ? ""
+                  : allgetDataMoviesUpdate4.items?.map((trendmovie, index) => (
+                      <Link href={`/${trendmovie.slug}`} key={index}>
+                        <div className={trendMovieCSS.trend__content}>
+                          <div className={trendMovieCSS.trend__content___image}>
+                            <Image
+                              width={300}
+                              height={300}
+                              src={`${pathImage}${trendmovie.thumb_url}`}
+                              alt={trendmovie.name}
+                            />
                             <div
+                              className={trendMovieCSS.trend__content___ribbon}
+                            >
+                              {/* <div
                               className={
                                 trendMovieCSS.trend__content___ribbon___action
                               }
                             >
-                              {trendmovie.movie.quality}
+                              {trendmovie.quality}
+                            </div> */}
+                              <div
+                                className={
+                                  trendMovieCSS.trend__content___ribbon___status
+                                }
+                              >
+                                {trendmovie.year}
+                              </div>
                             </div>
+                          </div>
+                          <div className={trendMovieCSS.trend__content___list}>
                             <div
                               className={
-                                trendMovieCSS.trend__content___ribbon___status
+                                trendMovieCSS.trend__content___list___title
                               }
                             >
-                              {trendmovie.movie.year}
+                              <h3
+                                className={
+                                  trendMovieCSS.trend__content___list___title___name
+                                }
+                              >
+                                {trendmovie.name}
+                              </h3>
+                              <div
+                                className={
+                                  trendMovieCSS.trend__content___list___priview
+                                }
+                              >
+                                {trendmovie.origin_name}
+                              </div>
+                              <div style={{ fontSize: "11px", color: "red" }}>
+                                {trendmovie.view} người xem
+                              </div>
+                              <div
+                                style={{ fontSize: "11px", color: "red" }}
+                              ></div>
                             </div>
                           </div>
                         </div>
-                        <div className={trendMovieCSS.trend__content___list}>
-                          <div
-                            className={
-                              trendMovieCSS.trend__content___list___title
-                            }
-                          >
-                            <h3
-                              className={
-                                trendMovieCSS.trend__content___list___title___name
-                              }
-                            >
-                              {trendmovie.movie.name}
-                            </h3>
-                            <div
-                              className={
-                                trendMovieCSS.trend__content___list___priview
-                              }
-                            >
-                              {trendmovie.movie.origin_name}
-                            </div>
-                            <div style={{ fontSize: "11px", color: "red" }}>
-                              {trendmovie.movie.view} người xem
-                            </div>
-                            <div
-                              style={{ fontSize: "11px", color: "red" }}
-                            ></div>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  ))
-                )}
+                      </Link>
+                    ))}
               </div>
             </Col>
             <Col>
               <Row>
-                {allgetActionMovie === undefined ? (
+                {allgetDataMoviesUpdate === null ? (
                   <Loader />
                 ) : (
                   <Col>
                     <MovieList
-                      title="Phim hành động"
-                      DataMovie={allgetActionMovie}
+                      title="Phim mới hôm nay"
+                      DataMovie={allgetDataMoviesUpdate}
                     />
                     <MovieList
-                      title="Phim kinh dị"
-                      DataMovie={allgetHorrorMovie}
+                      title="Phim mới hôm qua"
+                      DataMovie={allgetDataMoviesUpdate1}
                     />
                     <MovieList
-                      title="Phim viễn tưởng"
-                      DataMovie={allgetFantasyMovie}
+                      title="Phim hot"
+                      DataMovie={allgetDataMoviesUpdate5}
                     />
                     <MovieList
-                      title="Phim tình cảm"
-                      DataMovie={allgetRomanceMovie}
+                      title="Phim hay"
+                      DataMovie={allgetDataMoviesUpdate2}
                     />
                     <MovieList
-                      title="Phim hài hước"
-                      DataMovie={allgetComedyMovie}
+                      title="Phim lẻ"
+                      DataMovie={allgetDataMoviesUpdate3}
                     />
+                    <MovieList
+                      title="Phim bộ"
+                      DataMovie={allgetDataMoviesUpdate6}
+                    />
+                    <MovieList
+                      title="Phim chiếu rap"
+                      DataMovie={allgetDataMoviesUpdate7}
+                    />
+                    <MovieList
+                      title="Phim hấp dẫn"
+                      DataMovie={allgetDataMoviesUpdate8}
+                    />
+                    <MovieList
+                      title="list phim hay"
+                      DataMovie={allgetDataMoviesUpdate9}
+                    />
+               
                   </Col>
                 )}
               </Row>
@@ -153,29 +167,40 @@ export default function Home({
     </Layout>
   );
 }
+
 export async function getStaticProps() {
   try {
-    const allTrendMovieDatas = await getTrendMovieData();
-    const allgetActionMovie = await getActionMovie();
-    const allgetHorrorMovie = await getHorrorMovie();
-    const allgetFantasyMovie = await getFantasyMovie();
-    const allgetRomanceMovie = await getRomanceMovie();
-    const allgetComedyMovie = await getComedyMovie();
+    const allgetDataMoviesUpdate = await getDataMoviesUpdate(1);
+    const allgetDataMoviesUpdate1 = await getDataMoviesUpdate(2);
+    const allgetDataMoviesUpdate2 = await getDataMoviesUpdate(6);
+    const allgetDataMoviesUpdate3 = await getDataMoviesUpdate(10);
+    const allgetDataMoviesUpdate4 = await getDataMoviesUpdate(15);
+    const allgetDataMoviesUpdate5 = await getDataMoviesUpdate(4);
+    const allgetDataMoviesUpdate6 = await getDataMoviesUpdate(17);
+    const allgetDataMoviesUpdate7 = await getDataMoviesUpdate(19);
+    const allgetDataMoviesUpdate8 = await getDataMoviesUpdate(21);
+    const allgetDataMoviesUpdate9 = await getDataMoviesUpdate(23);
 
     return {
       props: {
-        allTrendMovieDatas,
-        allgetHorrorMovie,
-        allgetActionMovie,
-        allgetFantasyMovie,
-        allgetRomanceMovie,
-        allgetComedyMovie,
+        allgetDataMoviesUpdate,
+        allgetDataMoviesUpdate1,
+        allgetDataMoviesUpdate2,
+        allgetDataMoviesUpdate3,
+        allgetDataMoviesUpdate4,
+        allgetDataMoviesUpdate5,
+        allgetDataMoviesUpdate6,
+        allgetDataMoviesUpdate7,
+        allgetDataMoviesUpdate8,
+        allgetDataMoviesUpdate9,
       },
     };
   } catch (error) {
     console.log("Error fetching data:", error);
     return {
-      notFound: true,
+      props: {
+        allgetDataMoviesUpdate: null, // Đặt giá trị mặc định hoặc bỏ đi thuộc tính
+      },
     };
   }
 }

@@ -26,7 +26,7 @@ import SliderCSS from "@/styles/_navbar.module.scss";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { BiSolidDiscount, BiLogOut, BiSearchAlt } from "react-icons/bi";
 import axios from "axios";
-import { searchMovie } from "@/pages/api/getData";
+// import { searchMovie } from "@/pages/api/getData";
 
 const Header = () => {
   const [searchResult, setSearchResult] = useState([]);

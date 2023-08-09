@@ -5,7 +5,7 @@ import WatchMovieCSS from "@/styles/_watchmovie.module.scss";
 import WatchTVCSS from "@/styles/_watchtv.module.scss";
 import { Container, Row, Col } from "react-bootstrap";
 import Breadcrumb from "@/components/Breadcrumb";
-import { getOneMovieSlug } from "@/pages/api/getData";
+import { getDataMoviesOne } from "@/pages/api/getData";
 import { useRouter } from "next/router";
 import url from "url";
 
@@ -22,12 +22,12 @@ export default function WatchTV() {
     const fetchMovie = async () => {
       try {
         if (slug !== undefined && slug !== "[slug]") {
-          const response = await getOneMovieSlug(slug);
+          const response = await getDataMoviesOne(slug);
 
-          return setMovie(response.data.document);
+          return setMovie(response);
         }
       } catch (error) {
-        console.log("lỗi", error);
+        console.log("Lỗi >>>>>>>>>>>>");
         // router.push("/not-found");
       }
     };

@@ -1,4 +1,4 @@
-const database = require("../Config/Database");
+const database = require("../config/Database");
 const axios = require("axios");
 
 async function fetchData() {

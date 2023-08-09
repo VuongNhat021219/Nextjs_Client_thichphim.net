@@ -11,6 +11,7 @@ import {
 
 export default function MovieList(props) {
   const movies = props.DataMovie;
+  const pathImages = props.DataMovie.pathImage;
   const title = props.title;
   const [rowSide, setRowSide] = useState(0);
   const numberRow = 375;
@@ -93,7 +94,7 @@ export default function MovieList(props) {
           onMouseUp={handleMouseUp}
           onTouchEnd={handleMouseUp}
         >
-          {movies.documents.map((movie, index) => (
+          {movies.items.map((movie, index) => (
             <div
               className={`${MovieListCSS.item} ${
                 props.PhimMoiCSS === undefined ? "" : props.PhimMoiCSS.item
@@ -103,7 +104,8 @@ export default function MovieList(props) {
               <Movie
                 PhimMoiCSS={props.PhimMoiCSS}
                 rowSide={rowSide}
-                movie={movie.movie}
+                movie={movie}
+                pathImages={pathImages}
               />
             </div>
           ))}

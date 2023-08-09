@@ -1,7 +1,6 @@
-const database = require("../Config/Database");
+const database = require("../config/Database");
 
 async function validateMovie(movie) {
- 
   const moviesController = await database.getCollection("movies");
   if (
     typeof movie.title !== "string" &&
@@ -25,7 +24,6 @@ async function validateMovie(movie) {
 }
 
 const getMovie = async () => {
- 
   const moviesController = await database.getCollection("movies");
   const movie = await moviesController.find().toArray();
   return movie;

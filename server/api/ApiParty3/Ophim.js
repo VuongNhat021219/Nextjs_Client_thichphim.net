@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const database = require("../../Config/Database");
+const database = require("../../config/Database");
 const axios = require("axios");
 
 const getMoviesByCategorySlug = async (slug) => {

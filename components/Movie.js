@@ -4,7 +4,8 @@ import MovieCSS from "@/styles/_movie.module.scss";
 import Link from "next/link";
 
 export default function Movie(props) {
-  const movie = props.movie;
+  const movies = props.movie;
+  const pathImages = props.pathImages;
   const headingRef1 = useRef(null);
   const headingRef2 = useRef(null);
 
@@ -24,10 +25,10 @@ export default function Movie(props) {
       }
     }
   }, []);
-
+  console.log(movies);
   return (
     <>
-      <Link href={`/${movie.slug}`}>
+      <Link href={`/${movies.slug}`}>
         <div
           className={MovieCSS.bp__list}
           style={{ transform: `translateX(${props.rowSide}px)` }}
@@ -40,8 +41,8 @@ export default function Movie(props) {
             }`}
           >
             <Image
-              src={`${movie.thumb_url}`}
-              alt={movie.name}
+              src={`${pathImages}${movies.thumb_url}`}
+              alt={movies.name}
               width={300}
               height={300}
             />
@@ -58,7 +59,7 @@ export default function Movie(props) {
                 }`}
                 ref={headingRef1}
               >
-                {movie.origin_name}
+                {movies.origin_name}
               </h1>
             </div>
             <div
@@ -72,19 +73,19 @@ export default function Movie(props) {
                 }`}
                 ref={headingRef2}
               >
-                {movie.name}
+                {movies.name}
               </h1>
             </div>
           </div>
           <div className={MovieCSS.bp__list___ribbon}>
             <div className={MovieCSS.bp__list___ribbon___action}>
-              {movie.quality}
+              {/* {movies.quality} */} Phụ đề
             </div>
+            {/* <div className={MovieCSS.bp__list___ribbon___action}>
+              {movies.lang}
+            </div> */}
             <div className={MovieCSS.bp__list___ribbon___action}>
-              {movie.lang}
-            </div>
-            <div className={MovieCSS.bp__list___ribbon___action}>
-              {movie.year}
+              {movies.year}
             </div>
           </div>
         </div>

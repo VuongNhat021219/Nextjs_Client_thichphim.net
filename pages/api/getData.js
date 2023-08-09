@@ -1,4 +1,27 @@
-const axios = require("axios");
+import axios from "axios";
+
+export async function getDataMoviesUpdate(page) {
+  try {
+    const { data } = await axios.get(
+      `https://ophim1.com/danh-sach/phim-moi-cap-nhat?page=${page}`
+    );
+    return data;
+  } catch (error) {
+    console.log("ERROR >>>>>>>", error);
+    throw error; // Ném lại lỗi
+  }
+}
+export async function getDataMoviesOne(slug) {
+  try {
+    const { data } = await axios.get(
+      `https://ophim1.com/phim/${slug}`
+    );
+    return data;
+  } catch (error) {
+    console.log("ERROR >>>>>>>", error);
+    throw error; // Ném lại lỗi
+  }
+}
 
 export async function getTrendMovieData() {
   try {
